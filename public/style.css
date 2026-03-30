@@ -1,0 +1,903 @@
+/*
+ * style.css — Burger Guys Home Page Styles
+ *
+ * THEME: Dark / bold / burger-themed
+ * COLORS: Black background, yellow accent, red highlights
+ * FONTS: Bebas Neue (display) + DM Sans (body)
+ */
+
+/* ── CSS Variables (design tokens) ─────────────────────── */
+:root {
+    --bg:         #0d0d0d;       /* near-black page background */
+    --surface:    #161616;       /* card background */
+    --surface-2:  #1f1f1f;       /* slightly lighter surface */
+    --border:     #2a2a2a;       /* subtle borders */
+    --text:       #f0ece4;       /* warm off-white primary text */
+    --text-dim:   #7a7570;       /* muted text */
+    --accent:     #f5c300;       /* bold yellow — the brand color */
+    --accent-red: #e03c2d;       /* red for hot/spicy badges */
+    --radius:     12px;
+    --shadow:     0 4px 24px rgba(0,0,0,.5);
+    --trans:      .2s ease;
+  
+    /* Font families */
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+  
+  /* ── Reset ──────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  a { text-decoration: none; color: inherit; }
+  
+  img { display: block; max-width: 100%; }
+  
+  /* ── Layout container ───────────────────────────────────── */
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     BUTTONS
+  ════════════════════════════════════════════════════════ */
+  /* Primary: filled yellow */
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover {
+    background: #ffd633;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245,195,0,.3);
+  }
+  .btn-primary:active { transform: scale(.97); }
+  
+  /* Ghost: outlined */
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 13px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color var(--trans), color var(--trans);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  
+  /* ════════════════════════════════════════════════════════
+     SECTION TYPOGRAPHY HELPERS
+  ════════════════════════════════════════════════════════ */
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .section-title .text-accent { color: var(--accent); }
+  
+  /* ════════════════════════════════════════════════════════
+     NAVBAR
+  ════════════════════════════════════════════════════════ */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 68px;
+    background: rgba(13,13,13,0);   /* starts transparent */
+    border-bottom: 1px solid transparent;
+    transition: background var(--trans), border-color var(--trans), backdrop-filter var(--trans);
+  }
+  
+  /* When user scrolls down, JS adds .scrolled class */
+  .navbar.scrolled {
+    background: rgba(13,13,13,.92);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--border);
+  }
+  
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .logo-icon { font-size: 1.3rem; }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    transition: color var(--trans);
+  }
+  .nav-links a:hover { color: var(--text); }
+  
+  /* CTA button in nav */
+  .nav-links .nav-cta {
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    padding: 9px 22px;
+    border-radius: 7px;
+    transition: background var(--trans);
+  }
+  .nav-links .nav-cta:hover { background: #ffd633; color: #000; }
+  
+  /* Ghost login button in nav */
+  .nav-links .nav-ghost {
+    border: 1px solid var(--border);
+    padding: 8px 20px;
+    border-radius: 7px;
+    color: var(--text);
+    transition: border-color var(--trans);
+  }
+  .nav-links .nav-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  
+  /* Mobile toggle (hidden on desktop) */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: var(--trans);
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     HERO SECTION
+  ════════════════════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 68px;   /* offset for fixed navbar */
+    overflow: hidden;
+  }
+  
+  /* Diagonal yellow stripe background decoration */
+  .hero-stripes {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(245,195,0,.025) 60px,
+        rgba(245,195,0,.025) 62px
+      );
+    pointer-events: none;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 80px 60px 120px;
+    max-width: 660px;
+  }
+  
+  /* Yellow badge above headline */
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,195,0,.12);
+    border: 1px solid rgba(245,195,0,.3);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 16px;
+    border-radius: 99px;
+    margin-bottom: 20px;
+  }
+  
+  /* Massive Bebas Neue headline */
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.95;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    margin-bottom: 24px;
+  }
+  /* Yellow accent word */
+  .hero-title-accent { color: var(--accent); }
+  
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 440px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  
+  /* Right side: giant burger emoji */
+  .hero-visual {
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .burger-art {
+    font-size: clamp(160px, 22vw, 320px);
+    line-height: 1;
+    filter: drop-shadow(0 0 60px rgba(245,195,0,.25));
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Small floating icons around the burger */
+  .hero-floating {
+    position: absolute;
+    font-size: 2.4rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  .hero-floating--1 { top: 10%; right: 15%; animation-delay: .5s; }
+  .hero-floating--2 { bottom: 20%; right: 5%; animation-delay: 1s; }
+  .hero-floating--3 { top: 30%; right: 2%; animation-delay: 1.5s; }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-14px); }
+  }
+  
+  /* ── Marquee strip (scrolling text belt) ──────────────── */
+  .marquee-wrap {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--accent);
+    overflow: hidden;
+    padding: 10px 0;
+    z-index: 3;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: #000;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+  }
+  .marquee-track .sep { color: rgba(0,0,0,.4); }
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     ABOUT SECTION
+  ════════════════════════════════════════════════════════ */
+  .about {
+    padding: 100px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  
+  .about-text p {
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  
+  /* 2×2 grid of stat cards */
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    text-align: center;
+    transition: border-color var(--trans), transform var(--trans);
+  }
+  .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     FEATURED MENU PREVIEW
+  ════════════════════════════════════════════════════════ */
+  .menu-preview {
+    padding: 100px 0;
+  }
+  
+  /* 3-column menu card grid */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  
+  .menu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+  }
+  .menu-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,.5);
+  }
+  
+  /* Gold left-border accent on featured card */
+  .menu-card--featured {
+    border-color: rgba(245,195,0,.4);
+    background: linear-gradient(135deg, var(--surface) 80%, rgba(245,195,0,.06) 100%);
+  }
+  
+  .menu-card-emoji {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  .menu-card-info h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .menu-card-info p {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  
+  .menu-card-price {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-top: auto;
+  }
+  
+  /* Category badge */
+  .menu-card-badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .badge-hot {
+    background: rgba(224,60,45,.15);
+    border-color: rgba(224,60,45,.3);
+    color: #e87065;
+  }
+  .badge-side {
+    background: rgba(245,195,0,.1);
+    border-color: rgba(245,195,0,.25);
+    color: #d4a800;
+  }
+  .badge-drink {
+    background: rgba(80,160,220,.1);
+    border-color: rgba(80,160,220,.25);
+    color: #70aadc;
+  }
+  
+  .menu-cta-wrap { text-align: center; }
+  
+  /* ════════════════════════════════════════════════════════
+     CONTACT SECTION
+  ════════════════════════════════════════════════════════ */
+  .contact {
+    padding: 100px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .contact-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    transition: border-color var(--trans);
+  }
+  .contact-card:hover { border-color: var(--accent); }
+  .contact-icon {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .contact-card p {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     FOOTER
+  ════════════════════════════════════════════════════════ */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 36px 0;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-nav a {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    transition: color var(--trans);
+  }
+  .footer-nav a:hover { color: var(--accent); }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     RESPONSIVE — TABLET & MOBILE
+  ════════════════════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .about-grid     { grid-template-columns: 1fr; gap: 48px; }
+    .menu-grid      { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid   { grid-template-columns: repeat(2, 1fr); }
+    .hero-visual    { display: none; }  /* hide big emoji on tablet */
+    .hero-content   { padding: 60px 32px 100px; max-width: 100%; }
+  }
+  
+  @media (max-width: 600px) {
+    /* Show mobile hamburger, hide link list */
+    .nav-toggle     { display: flex; }
+    .navbar         { padding: 0 20px; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 68px; left: 0; right: 0;
+      background: #111;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .nav-links.open { display: flex; }
+  
+    .hero-content   { padding: 48px 20px 100px; }
+    .hero-title     { font-size: clamp(3.5rem, 18vw, 6rem); }
+    .menu-grid      { grid-template-columns: 1fr; }
+    .contact-grid   { grid-template-columns: 1fr; }
+    .about-stats    { grid-template-columns: 1fr 1fr; }
+    .footer-inner   { flex-direction: column; text-align: center; }
+  }
+/* ══════════════════════════════════════════════════════════
+   NAV AVATAR — replaces the Login button after login
+   (user's initial shown as a coloured circle)
+══════════════════════════════════════════════════════════ */
+.nav-avatar {
+  position: relative;
+  cursor: pointer;
+}
+
+/* The yellow circle with the first letter of the user's name */
+.avatar-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 2px solid transparent;
+  transition: border-color var(--trans), transform var(--trans);
+  user-select: none;
+}
+.nav-avatar:hover .avatar-initial {
+  border-color: #fff;
+  transform: scale(1.08);
+}
+
+/* Dropdown that appears when clicking/hovering the avatar */
+.avatar-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 170px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.6);
+  z-index: 999;
+  flex-direction: column;
+  gap: 2px;
+}
+/* Show dropdown when avatar is hovered OR focused */
+.nav-avatar:hover .avatar-dropdown,
+.nav-avatar:focus-within .avatar-dropdown {
+  display: flex;
+}
+
+/* User's full name at the top of the dropdown */
+.avatar-name {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 6px 10px 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Links inside the dropdown */
+.avatar-dropdown a,
+.avatar-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-size: .84rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: background var(--trans), color var(--trans);
+  text-decoration: none;
+}
+.avatar-dropdown a:hover,
+.avatar-dropdown button:hover {
+  background: rgba(245,195,0,.1);
+  color: var(--accent);
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOOD GALLERY — horizontal scrolling items, pauses on hover
+══════════════════════════════════════════════════════════ */
+.food-gallery {
+  padding: 80px 0;
+  background: var(--bg);
+  overflow: hidden;         /* clip the scrolling overflow */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* The visible window — overflow:hidden clips the runner */
+.gallery-runner {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* The moving strip — CSS animation */
+.gallery-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;                   /* as wide as all items combined */
+  animation: galleryScroll 32s linear infinite;
+}
+
+/* Hovering the runner pauses the animation */
+.gallery-runner:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+@keyframes galleryScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }  /* -50% because items are duplicated */
+}
+
+/* Individual gallery card */
+.gallery-item {
+  flex-shrink: 0;
+  width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;             /* clips the image to rounded corners */
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  cursor: default;
+  position: relative;
+}
+
+/* When the whole runner is paused (hovered) AND this card is directly hovered */
+.gallery-runner:hover .gallery-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 20px 48px rgba(245,195,0,.2);
+}
+
+/* The image fills the top of the card — fixed height, cropped to fit */
+.gallery-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;           /* crops the image to fill the box */
+  object-position: center;
+  display: block;
+  transition: transform .35s ease;
+}
+
+/* Zoom the image slightly on card hover */
+.gallery-runner:hover .gallery-item:hover .gallery-img {
+  transform: scale(1.07);
+}
+
+/* Golden overlay that fades in on hover */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;           /* covers just the image area */
+  height: 160px;
+  background: rgba(245,195,0,.08);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.gallery-runner:hover .gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Name label below the image */
+.gallery-name {
+  font-family: var(--font-body);
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 14px 12px;
+  transition: color .25s ease;
+}
+.gallery-runner:hover .gallery-item:hover .gallery-name {
+  color: var(--accent);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCROLLING REVIEWS
+   Two rows: row 1 scrolls left, row 2 scrolls right
+   Both pause on hover
+══════════════════════════════════════════════════════════ */
+.reviews-section {
+  padding: 80px 0 100px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* Wrapper that clips and handles hover pause */
+.reviews-runner {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Each row is a flexbox strip that animates */
+.reviews-row {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+/* Row 1: left-to-right animation (scrolls left) */
+.reviews-row--left {
+  animation: scrollLeft 36s linear infinite;
+}
+/* Row 2: right-to-left animation (scrolls right / reverse) */
+.reviews-row--right {
+  animation: scrollRight 36s linear infinite;
+}
+
+/* Pause on hover for each runner independently */
+.reviews-runner:hover .reviews-row {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Individual review card */
+.review-card {
+  flex-shrink: 0;
+  width: 220px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+/* When paused (hovered runner) and this card is directly hovered */
+.reviews-runner:hover .review-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* Gold stars */
+.review-stars {
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: .06em;
+}
+
+/* The short review quote */
+.review-text {
+  font-size: .87rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-style: italic;
+  flex: 1;
+}
+
+/* Reviewer name + avatar row */
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Coloured circle with reviewer's initial */
+.review-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);    /* overridden per-card with inline style */
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-author span {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+/* Placeholder shown when gallery image fails to load (before you add real photos) */
+.gallery-img[src$=".jpg"]:not([complete]),
+.gallery-img {
+  background: var(--surface-2);
+  min-height: 160px;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback — Burger Guys</title>
+
+  <!-- Same fonts as the rest of the site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Shared site styles + auth styles (reuse the card/form styling) -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="stylesheet" href="feedback.css" />
+</head>
+<body>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <header class="navbar scrolled" id="navbar">
+    <a class="nav-logo" href="index.html">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="105" height="99" />
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="menu.html" class="nav-cta">Full Menu</a>
+      <a href="feedback.html" style="color:var(--accent)">Feedback</a>
+      <a href="login.html" class="nav-ghost">Login</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ PAGE HERO ══════════ -->
+  <section class="feedback-hero">
+    <div class="feedback-hero-inner">
+      <p class="section-label">We Value Your Opinion</p>
+      <h1 class="section-title">
+        Give Us <span class="text-accent">Feedback</span>
+      </h1>
+      <p class="feedback-hero-desc">
+        Loved your meal? Had a suggestion? We're all ears. 👂
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ FEEDBACK FORM ══════════ -->
+  <main class="feedback-main">
+
+    <!-- Welcome banner (shows logged-in user's name) -->
+    <div class="feedback-welcome" id="welcomeBanner">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="feedback-layout">
+
+      <!-- LEFT: The form card -->
+      <div class="feedback-card">
+
+        <h2 class="card-heading">Share Your Experience</h2>
+
+        <!-- Success / Error message -->
+        <div id="feedbackMsg" class="feedback-msg" style="display:none"></div>
+
+        <form id="feedbackForm" novalidate>
+
+          <!-- ── Star Rating ───────────────────────── -->
+          <div class="form-group">
+            <label>How was your experience?</label>
+            <div class="star-row" id="starRow">
+              <span class="star" data-val="1" title="Terrible">★</span>
+              <span class="star" data-val="2" title="Bad">★</span>
+              <span class="star" data-val="3" title="Okay">★</span>
+              <span class="star" data-val="4" title="Good">★</span>
+              <span class="star" data-val="5" title="Amazing!">★</span>
+            </div>
+            <!-- Text label that updates as user hovers/clicks stars -->
+            <div class="rating-label" id="ratingLabel">Click a star to rate</div>
+            <span class="field-err" id="rating-err"></span>
+          </div>
+
+          <!-- ── Visit Type ────────────────────────── -->
+          <div class="form-group">
+            <label>Type of visit</label>
+            <div class="visit-pills" id="visitPills">
+              <button type="button" class="visit-pill" data-type="Dine In">🍽 Dine In</button>
+              <button type="button" class="visit-pill" data-type="Takeout">🥡 Takeout</button>
+              <button type="button" class="visit-pill" data-type="Delivery">🛵 Delivery</button>
+            </div>
+          </div>
+
+          <!-- ── Written Feedback ──────────────────── -->
+          <div class="form-group">
+            <label for="feedbackText">Your feedback</label>
+            <textarea
+              id="feedbackText"
+              rows="5"
+              placeholder="Tell us what you loved, what could be better, or anything on your mind…"
+              maxlength="500"
+            ></textarea>
+            <!-- Live character counter -->
+            <div class="char-count"><span id="charCount">0</span> / 500</div>
+            <span class="field-err" id="feedback-err"></span>
+          </div>
+
+          <button type="submit" class="btn-primary feedback-submit" id="submitBtn">
+            Submit Feedback →
+          </button>
+
+        </form>
+      </div>
+
+      <!-- RIGHT: Info sidebar -->
+      <div class="feedback-sidebar">
+
+        <div class="sidebar-card">
+          <div class="sidebar-icon">⭐</div>
+          <h3>Why Rate Us?</h3>
+          <p>Your feedback helps us serve better burgers and improve every visit. Every review is read by our team.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-icon">🎁</div>
+          <h3>Get a Reward</h3>
+          <p>Leave a 5-star review and show this page on your next visit for a free side of Classic Fries!</p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-icon">📞</div>
+          <h3>Need Help?</h3>
+          <p>For urgent issues, call us at <strong>(928) 555-0199</strong> or email hello@burgerguys.com</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ Past Feedback (shows all saved feedback from localStorage) ══ -->
+    <div class="past-feedback-section" id="pastFeedbackSection" style="display:none">
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px">
+        Your Past <span class="text-accent">Reviews</span>
+      </h2>
+      <div class="past-feedback-list" id="pastFeedbackList">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="80" height="70" />
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+      <p class="footer-copy">© 2025 Burger Guys. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/feedback.js"></script>
+</body>
+</html>

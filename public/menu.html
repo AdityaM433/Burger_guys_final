@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Menu — Burger Guys</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="menu.css" />
+</head>
+<body>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <header class="navbar scrolled" id="navbar">
+    <a class="nav-logo" href="index.html">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="105" height="99">
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="login.html" class="nav-ghost">Login</a>
+    </nav>
+    <!-- Cart button in navbar -->
+    <button class="cart-nav-btn" id="cartNavBtn">
+      🛒 Cart <span class="cart-nav-count" id="cartNavCount">0</span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ PAGE HERO ══════════ -->
+  <section class="menu-hero">
+    <div class="menu-hero-content">
+      <p class="section-label">What We Serve</p>
+      <h1 class="section-title">Our Full <span class="text-accent">Menu</span></h1>
+      <p class="menu-hero-desc">Every item made fresh, every single day. Pick your poison. 🍔</p>
+    </div>
+  </section>
+
+  <!-- ══════════ FILTER TOOLBAR ══════════ -->
+  <div class="menu-toolbar">
+    <div class="container toolbar-inner">
+      <div class="menu-search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="menuSearch" placeholder="Search menu…" autocomplete="off" />
+      </div>
+      <div class="filter-pills" id="filterPills">
+        <button class="pill active" data-cat="All">All</button>
+        <button class="pill" data-cat="Burger">🍔 Burgers</button>
+        <button class="pill" data-cat="Side">🍟 Sides</button>
+        <button class="pill" data-cat="Drink">🥤 Drinks</button>
+        <button class="pill" data-cat="Combo">🎁 Combos</button>
+        <button class="pill" data-cat="Dessert">🍦 Desserts</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ ITEM COUNT ══════════ -->
+  <div class="container">
+    <p class="item-count" id="itemCount">Loading menu…</p>
+  </div>
+
+  <!-- ══════════ MENU GRID ══════════ -->
+  <main class="container menu-main">
+    <div class="menu-full-grid" id="menuGrid">
+      <!-- skeleton loaders while JS fetches -->
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+      <div class="menu-full-card skeleton"></div>
+    </div>
+    <div id="emptyState" class="empty-state" style="display:none">
+      <div class="empty-icon">🔍</div>
+      <h3>Nothing found</h3>
+      <p>Try a different search or category.</p>
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="80" height="70" />
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+      <p class="footer-copy">© 2025 Burger Guys. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ══════════ CART DRAWER (slides in from right) ══════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>🛒 Your Cart</h2>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+
+    <!-- Cart items list — filled by JS -->
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <div style="font-size:2.5rem;margin-bottom:12px">🛒</div>
+        <p>Your cart is empty!</p>
+        <p style="font-size:.8rem;color:var(--text-dim);margin-top:6px">Add items from the menu</p>
+      </div>
+    </div>
+
+    <!-- Cart total + checkout -->
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-total-row">
+        <span>Tax (8%)</span>
+        <span id="cartTax">$0.00</span>
+      </div>
+      <div class="cart-total-row cart-total-main">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-primary cart-checkout-btn" id="checkoutBtn">
+        Place Order →
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══════════ ORDER SUCCESS MODAL ══════════ -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none">
+    <div class="order-modal">
+      <div class="modal-icon">🎉</div>
+      <h2 class="modal-title">Order Placed!</h2>
+      <p class="modal-subtitle">Your food is being prepared right now.</p>
+
+      <div class="order-details" id="orderDetails">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="order-eta">
+        <span class="eta-icon">⏱</span>
+        Estimated time: <strong>20–30 minutes</strong>
+      </div>
+
+      <button class="btn-primary modal-close-btn" id="modalCloseBtn">
+        Back to Menu
+      </button>
+    </div>
+  </div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

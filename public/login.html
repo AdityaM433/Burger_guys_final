@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Burger Guys</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="navbar scrolled">
+    <a class="nav-logo" href="index.html">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="105" height="99" />
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="menu.html" class="nav-cta">Full Menu</a>
+      <a href="signup.html" class="nav-ghost">Sign Up</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card">
+
+      <div class="auth-logo">🍔</div>
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Log in to your Burger Guys account</p>
+
+      <!-- Message banner (success or error) -->
+      <div id="authMsg" class="auth-msg" style="display:none"></div>
+
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+          <span class="field-err" id="email-err"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Your password" autocomplete="current-password" />
+          <span class="field-err" id="password-err"></span>
+        </div>
+
+        <button type="submit" class="btn-primary auth-submit" id="submitBtn">Log In →</button>
+      </form>
+
+      <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up free</a></p>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

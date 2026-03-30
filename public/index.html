@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger Guys — Best Burgers in Town</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR: Menu → menu.html | Full Menu btn removed | Avatar on login -->
+  <header class="navbar" id="navbar">
+    <a class="nav-logo" href="index.html">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="105" height="99" />
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="#contact">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <!-- Login btn (hidden when logged in) -->
+      <a href="login.html" class="nav-ghost" id="navLoginBtn">Login</a>
+      <!-- User avatar bubble (shown when logged in) -->
+      <div class="nav-avatar" id="navAvatar" style="display:none">
+        <span class="avatar-initial" id="avatarInitial"></span>
+        <div class="avatar-dropdown" id="avatarDropdown">
+          <div class="avatar-name" id="avatarName"></div>
+          <a href="feedback.html">My Feedback</a>
+          <button id="logoutBtn">Log Out</button>
+        </div>
+      </div>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-stripes" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔥 Fresh Patties · Daily Baked Buns</div>
+      <h1 class="hero-title">
+        Best<br /><span class="hero-title-accent">Burgers</span><br />In Town
+      </h1>
+      <p class="hero-desc">Hand-smashed, flame-grilled, and stacked ridiculously high. We don't do ordinary here.</p>
+      <div class="hero-actions">
+        <a href="menu.html" class="btn-primary">Order Now</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <p>
+        <div class="burger-art"><img src="Images/[CITYPNG.COM]PNG Delicious Two Patty Beef Burger Tomato - 2000x2000.png" alt="Burger" style="float:right; width:550px; height:auto; margin-left: 15px;"></div>
+      </p>
+    </div>
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Smash Burgers</span><span class="sep">★</span>
+        <span>Double Stacks</span><span class="sep">★</span>
+        <span>Crispy Fries</span><span class="sep">★</span>
+        <span>Milkshakes</span><span class="sep">★</span>
+        <span>Loaded Dogs</span><span class="sep">★</span>
+        <span>Onion Rings</span><span class="sep">★</span>
+        <span>Smash Burgers</span><span class="sep">★</span>
+        <span>Double Stacks</span><span class="sep">★</span>
+        <span>Crispy Fries</span><span class="sep">★</span>
+        <span>Milkshakes</span><span class="sep">★</span>
+        <span>Loaded Dogs</span><span class="sep">★</span>
+        <span>Onion Rings</span><span class="sep">★</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">About Us</p>
+          <h2 class="section-title">We <span class="text-accent">Live</span> for the Burger</h2>
+          <p>Burger Guys started in 2018 from a single food truck with one obsession: making the most satisfying burger you've ever eaten. Fresh-ground beef, brioche buns baked every morning, and sauces made from scratch.</p>
+          <p>No frozen patties. No shortcuts. Just real food made with real care — every single day.</p>
+          <a href="menu.html" class="btn-primary" style="margin-top:24px;display:inline-block">Explore the Menu →</a>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card"><div class="stat-num">6+</div><div class="stat-label">Years Open</div></div>
+          <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label">Menu Items</div></div>
+          <div class="stat-card"><div class="stat-num">500K</div><div class="stat-label">Burgers Sold</div></div>
+          <div class="stat-card"><div class="stat-num">4.9★</div><div class="stat-label">Avg Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU PREVIEW -->
+  <section class="menu-preview" id="menu-preview">
+    <div class="container">
+      <p class="section-label">What We Serve</p>
+      <h2 class="section-title">Fan <span class="text-accent">Favourites</span></h2>
+      <div class="menu-grid" id="featured-grid">
+        <div class="menu-card">
+          <div class="menu-card-emoji">🍔</div>
+          <div class="menu-card-info"><h3>The Classic Guy</h3><p>Single smash patty, American cheese, pickles, onion, special sauce</p></div>
+          <div class="menu-card-price">$9.99</div>
+          <span class="menu-card-badge">Burger</span>
+        </div>
+        <div class="menu-card menu-card--featured">
+          <div class="menu-card-emoji">🔥</div>
+          <div class="menu-card-info"><h3>Double Smash Stack</h3><p>Two crispy smash patties, double cheese, caramelized onion, comeback sauce</p></div>
+          <div class="menu-card-price">$13.99</div>
+          <span class="menu-card-badge badge-hot">🔥 Popular</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-emoji">🌶️</div>
+          <div class="menu-card-info"><h3>Spicy Diablo</h3><p>Jalapeños, habanero mayo, pepper jack, ghost pepper relish</p></div>
+          <div class="menu-card-price">$12.49</div>
+          <span class="menu-card-badge">Burger</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-emoji">🍟</div>
+          <div class="menu-card-info"><h3>Loaded Fries</h3><p>Crinkle-cut fries, cheese sauce, bacon bits, jalapeños, ranch drizzle</p></div>
+          <div class="menu-card-price">$7.49</div>
+          <span class="menu-card-badge badge-side">Side</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-emoji">🥤</div>
+          <div class="menu-card-info"><h3>Classic Milkshake</h3><p>Thick-blended hand-spun shake — vanilla, chocolate, or strawberry</p></div>
+          <div class="menu-card-price">$5.99</div>
+          <span class="menu-card-badge badge-drink">Drink</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-emoji">🧅</div>
+          <div class="menu-card-info"><h3>Beer-Battered Rings</h3><p>Thick-cut onion rings, golden batter, chipotle dipping sauce</p></div>
+          <div class="menu-card-price">$5.99</div>
+          <span class="menu-card-badge badge-side">Side</span>
+        </div>
+      </div>
+      <div class="menu-cta-wrap">
+        <a href="menu.html" class="btn-primary">See All 30+ Items</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOD GALLERY — scrolling images with names
+       Pauses completely on hover
+  ════════════════════════════════════════ -->
+  <section class="food-gallery">
+    <div class="container" style="margin-bottom:32px">
+      <p class="section-label">Fresh Every Day</p>
+      <h2 class="section-title">Made with <span class="text-accent">Love</span></h2>
+    </div>
+    <!--
+      HOW TO ADD YOUR OWN IMAGES:
+      1. Create a folder called "images" inside the "public" folder
+      2. Add 10 food photos named: burger1.jpg, smash.jpg, diablo.jpg, bacon.jpg,
+         fries.jpg, milkshake.jpg, rings.jpg, wrap.jpg, sundae.jpg, family.jpg
+      3. The src paths below already point to images/filename.jpg
+
+      UNTIL you add real images, a dark placeholder will show with the item name.
+      The layout and hover effects work perfectly regardless.
+    -->
+    <div class="gallery-runner" id="galleryRunner">
+      <div class="gallery-track" id="galleryTrack">
+
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/[CITYPNG.COM]PNG Delicious Two Patty Beef Burger Tomato - 2000x2000.png" alt="Classic Guy" />
+          <div class="gallery-name">Classic Guy</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/doublesmash.png" alt="Double Smash" />
+          <div class="gallery-name">Double Smash</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/spicy_diablo.png" alt="Spicy Diablo" />
+          <div class="gallery-name">Spicy Diablo</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Baconbomb.png" alt="Bacon Bomb" />
+          <div class="gallery-name">Bacon Bomb</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/loadedfries.png" alt="Loaded Fries" />
+          <div class="gallery-name">Loaded Fries</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Milkshake_.png" alt="Milkshake" />
+          <div class="gallery-name">Milkshake</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Onion Rings.png" alt="Onion Rings" />
+          <div class="gallery-name">Onion Rings</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Veggie wrap.png" alt="Veggie Wrap" />
+          <div class="gallery-name">Veggie Wrap</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/brownie.png" alt="Brownie Sundae" />
+          <div class="gallery-name">Brownie Sundae</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/familypack.png" alt="Family Pack" />
+          <div class="gallery-name">Family Pack</div>
+        </div>
+
+        <!-- Exact duplicates below — needed for the seamless infinite scroll loop -->
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/[CITYPNG.COM]PNG Delicious Two Patty Beef Burger Tomato - 2000x2000.png" alt="Classic Guy" />
+          <div class="gallery-name">Classic Guy</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/doublesmash.png" alt="Double Smash" />
+          <div class="gallery-name">Double Smash</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/spicy_diablo.png" alt="Spicy Diablo" />
+          <div class="gallery-name">Spicy Diablo</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Baconbomb.png" alt="Bacon Bomb" />
+          <div class="gallery-name">Bacon Bomb</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/loadedfries.png" alt="Loaded Fries" />
+          <div class="gallery-name">Loaded Fries</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Milkshake_.png" alt="Milkshake" />
+          <div class="gallery-name">Milkshake</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Onion Rings.png" alt="Onion Rings" />
+          <div class="gallery-name">Onion Rings</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/Veggie wrap.png" alt="Veggie Wrap" />
+          <div class="gallery-name">Veggie Wrap</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/brownie.png" alt="Brownie Sundae" />
+          <div class="gallery-name">Brownie Sundae</div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="Images/familypack.png" alt="Family Pack" />
+          <div class="gallery-name">Family Pack</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Come <span class="text-accent">Hungry</span></h2>
+      <div class="contact-grid">
+        <div class="contact-card"><div class="contact-icon">📍</div><h3>Location</h3><p>123 Main Street<br />Flagstaff, AZ 86001</p></div>
+        <div class="contact-card"><div class="contact-icon">🕐</div><h3>Hours</h3><p>Mon–Thu: 11am – 9pm<br />Fri–Sun: 11am – 11pm</p></div>
+        <div class="contact-card"><div class="contact-icon">📞</div><h3>Phone</h3><p>(928) 555-0199</p><p style="margin-top:6px;font-size:.85rem;color:var(--text-dim)">Takeout orders welcome</p></div>
+        <div class="contact-card"><div class="contact-icon">✉️</div><h3>Email</h3><p>hello@burgerguys.com</p><p style="margin-top:6px;font-size:.85rem;color:var(--text-dim)">Catering inquiries too</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SCROLLING REVIEWS — 2 rows, opposite directions
+       Pauses on hover
+  ════════════════════════════════════════ -->
+  <section class="reviews-section">
+    <div class="container" style="margin-bottom:32px">
+      <p class="section-label">What People Say</p>
+      <h2 class="section-title">Happy <span class="text-accent">Customers</span></h2>
+    </div>
+
+    <!-- ROW 1 — scrolls LEFT -->
+    <div class="reviews-runner" id="reviewsRunner1">
+      <div class="reviews-row reviews-row--left">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Absolutely incredible!"</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">J</div><span>James M.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Best burger ever."</p><div class="review-author"><div class="review-avatar" style="background:#5b8dd9">S</div><span>Sofia R.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Worth every penny!"</p><div class="review-author"><div class="review-avatar" style="background:#6dae6e">A</div><span>Alex T.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-text">"Crispy fries obsessed."</p><div class="review-author"><div class="review-avatar" style="background:#9b59b6">M</div><span>Maya K.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Will come back daily."</p><div class="review-author"><div class="review-avatar" style="background:#e67e22">D</div><span>Diego F.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Sauce is unmatched."</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">P</div><span>Priya S.</span></div></div>
+        <!-- Duplicate -->
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Absolutely incredible!"</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">J</div><span>James M.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Best burger ever."</p><div class="review-author"><div class="review-avatar" style="background:#5b8dd9">S</div><span>Sofia R.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Worth every penny!"</p><div class="review-author"><div class="review-avatar" style="background:#6dae6e">A</div><span>Alex T.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-text">"Crispy fries obsessed."</p><div class="review-author"><div class="review-avatar" style="background:#9b59b6">M</div><span>Maya K.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Will come back daily."</p><div class="review-author"><div class="review-avatar" style="background:#e67e22">D</div><span>Diego F.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Sauce is unmatched."</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">P</div><span>Priya S.</span></div></div>
+      </div>
+    </div>
+
+    <!-- ROW 2 — scrolls RIGHT -->
+    <div class="reviews-runner" id="reviewsRunner2" style="margin-top:16px">
+      <div class="reviews-row reviews-row--right">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Smash patty perfection."</p><div class="review-author"><div class="review-avatar" style="background:#1abc9c">L</div><span>Lena W.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Freshest buns in town."</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">C</div><span>Carlos B.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-text">"Spicy Diablo is 🔥."</p><div class="review-author"><div class="review-avatar" style="background:#5b8dd9">N</div><span>Nadia H.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Family pack fed us all."</p><div class="review-author"><div class="review-avatar" style="background:#6dae6e">R</div><span>Ryan O.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Milkshake = heaven."</p><div class="review-author"><div class="review-avatar" style="background:#9b59b6">Z</div><span>Zara A.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Fast, fresh, fantastic."</p><div class="review-author"><div class="review-avatar" style="background:#e67e22">T</div><span>Tom G.</span></div></div>
+        <!-- Duplicate -->
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Smash patty perfection."</p><div class="review-author"><div class="review-avatar" style="background:#1abc9c">L</div><span>Lena W.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Freshest buns in town."</p><div class="review-author"><div class="review-avatar" style="background:#e03c2d">C</div><span>Carlos B.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-text">"Spicy Diablo is 🔥."</p><div class="review-author"><div class="review-avatar" style="background:#5b8dd9">N</div><span>Nadia H.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Family pack fed us all."</p><div class="review-author"><div class="review-avatar" style="background:#6dae6e">R</div><span>Ryan O.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Milkshake = heaven."</p><div class="review-author"><div class="review-avatar" style="background:#9b59b6">Z</div><span>Zara A.</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Fast, fresh, fantastic."</p><div class="review-author"><div class="review-avatar" style="background:#e67e22">T</div><span>Tom G.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="Screenshot_2026-03-28_at_13.46.16-removebg-preview.png" alt="Burger Guys" width="80" height="70" />
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+      <p class="footer-copy">© 2025 Burger Guys. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
